@@ -1,0 +1,1 @@
+ALTER TABLE `event` ADD `location_url` text NOT NULL;

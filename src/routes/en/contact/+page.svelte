@@ -1,0 +1,162 @@
+<script>
+  import { Phone, Mail } from 'lucide-svelte';
+   let name = '';
+  let email = '';
+  let message = '';
+  let success = false;
+  let error = '';
+
+  async function handleSubmit() {
+    try {
+      const res = await fetch('/kontakt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        success = true;
+        name = '';
+        email = '';
+        message = '';
+      } else {
+        error = data.error || 'Něco se pokazilo.';
+      }
+    } catch (err) {
+      error = 'Chyba spojení se serverem.';
+    }
+  }
+</script>
+
+<section class="contact-section">
+  <div class="contact-wrapper">
+    <h1>Contact</h1>
+    <p>Do you have a question? Contact us by phone or email.</p>
+{#if success}
+  <p style="color: green;">Message sent!</p>
+{:else if error}
+  <p style="color: red;">{error}</p>
+{/if}
+
+<form class="contact-form" on:submit|preventDefault={handleSubmit}>
+  <input type="text" placeholder="Your name" bind:value={name} required />
+  <input type="email" placeholder="Your email" bind:value={email} required />
+  <textarea rows="5" placeholder="Your message" bind:value={message} required></textarea>
+  <button type="submit">Send a message</button>
+</form>
+
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <Phone class="icon" />
+        <strong>Phone</strong> <a href="tel:+420123456789">+420 123 456 789</a>
+      </div>
+    <div class="contact-item">
+        <Mail class="icon" />
+        <strong>Email:</strong> <a href="mailto:info@timegate.cz">ttimegate@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .contact-wrapper {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+
+  a {
+    color: #f15bb5;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+
+ 
+  .contact-form input,
+  .contact-form textarea {
+    width: 95%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #1a1a1a;
+    color: white;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #999;
+  }
+
+  .contact-form button {
+    background: #f15bb5;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    transition: background 0.3s ease;
+  }
+
+  .contact-form button:hover {
+    background: #fa89cb;
+  }
+
+    @media (max-width: 767px) {
+    .contact-info{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+</style>
