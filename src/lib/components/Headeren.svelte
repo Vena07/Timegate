@@ -37,7 +37,7 @@
 <header class:scrolled>
   <div class="container">
     <div class="logo-container">
-      <a href="/" class="logo-img"><img src="/image.png" alt=""></a> 
+      <a href="/en" class="logo-img"><img src="/image.png" alt=""></a> 
     </div>
 
     <!-- Desktop menu -->
@@ -124,6 +124,7 @@
     box-shadow: none;
     display: flex;
     justify-content: center;
+    backdrop-filter: blur(10px);
   }
 
   header.scrolled {

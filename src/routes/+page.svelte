@@ -324,14 +324,15 @@
     letter-spacing: 3px;
   }
 
-  .events-grid {
+ .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 2fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
+    gap: 2rem;
     place-items: center;
     max-width: 1200px;
     margin: 0 auto;
   }
+
 
   .event-card {
     background: #1a1a1a;

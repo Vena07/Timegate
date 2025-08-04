@@ -88,22 +88,22 @@
 
   .contact-info {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin-top: 20px;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-bottom: 3rem;
+    color: white;
   }
 
   .contact-item {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    justify-content: center;
   }
 
   a {
-    color: #f15bb5;
+    color: #ffffff;
     text-decoration: none;
   }
 
@@ -118,7 +118,6 @@
     text-align: left;
   }
 
- 
   .contact-form input,
   .contact-form textarea {
     width: 95%;
@@ -136,19 +135,19 @@
   }
 
   .contact-form button {
-    background: #f15bb5;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    color: white;
-    font-weight: bold;
-    border-radius: 10px;
-    cursor: pointer;
-    align-self: center;
-    transition: background 0.3s ease;
+    background-color: #fff;
+  border-radius: 10px;
+  color: #0d172a;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.4rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
   }
 
   .contact-form button:hover {
-    background: #fa89cb;
+    background-color: #1e293b;
+  color: #fff;
   }
 
     @media (max-width: 767px) {
@@ -158,5 +157,5 @@
       justify-content: center;
       align-items: center;
     }
-  }
+}
 </style>

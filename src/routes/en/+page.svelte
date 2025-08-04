@@ -123,7 +123,7 @@
             <h2>{event.title}</h2>
             <p class="info-item"><Calendar size="30" /> <strong>Date:</strong> {event.date}</p>
             <p class="info-item"><MapPin size="30" /> <strong>Location:</strong> <a style="text-decoration: underline;" href="{event.location_url}">{event.location}</a></p>
-            <a href={`/akce?id=${event.id}`} class="link">Find out more</a>
+            <a href={`/en/event?id=${event.id}`} class="link">Find out more</a>
           </div>
         </article>
       {/each}
@@ -146,7 +146,7 @@
         {/each}
       </div>
     </div>
-    <a class="link" href="/galerie">More photos here</a>
+    <a class="link" href="/en/gallery">More photos here</a>
   {/if}
 </section>
 
@@ -327,8 +327,8 @@
 
   .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 2fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
+    gap: 2rem;
     place-items: center;
     max-width: 1200px;
     margin: 0 auto;

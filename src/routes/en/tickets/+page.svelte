@@ -71,20 +71,21 @@
 
 .ticket-list {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1r;
   gap: 2rem;
   justify-items: center;
 }
 
 .ticket {
   display: flex;
-  width: 800px;
+  width: 700px;
   background: #1e1f21;
   margin-bottom: 50px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease;
+  
 }
 
 .ticket:hover {
@@ -100,7 +101,7 @@
 .ticket-right {
   position: relative;
   flex: 1;
-  background: #0e0e0e;
+  background: #1a1a1a;
   color: #fff;
   padding: 20px;
   display: flex;

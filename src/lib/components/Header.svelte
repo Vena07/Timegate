@@ -124,6 +124,7 @@
     box-shadow: none;
     display: flex;
     justify-content: center;
+    backdrop-filter: blur(10px);
   }
 
   header.scrolled {
@@ -223,8 +224,9 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
-    align-items: center; /* vycentrovat odkazy */
+    align-items: center;
     justify-content: center;
+    backdrop-filter: blur(10px);
   }
 
   .menu p {
@@ -240,6 +242,7 @@
     transition: color 0.3s ease, transform 0.2s ease;
     padding-bottom: 5px;
     overflow: hidden;
+    backdrop-filter: blur(10px);
   }
 
   /* Stejný hover efekt pro mobilní menu */

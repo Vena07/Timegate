@@ -78,7 +78,7 @@
 
 .ticket {
   display: flex;
-  width: 800px;
+  width: 700px;
   background: #1e1f21;
   margin-bottom: 50px;
   border-radius: 16px;
@@ -100,7 +100,7 @@
 .ticket-right {
   position: relative;
   flex: 1;
-  background: #0e0e0e;
+ background: #1a1a1a;
   color: #fff;
   padding: 20px;
   display: flex;

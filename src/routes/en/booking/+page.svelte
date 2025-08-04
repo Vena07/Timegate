@@ -108,13 +108,13 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
 
-  .card img {
-    width: 100%;
+ .card img {
+    width: 230px;
+    height: 230px;
     border-radius: 6px;
     object-fit: cover;
-    height: 500px;
-  }
 
+  }
   .card p {
     margin-top: 0.5rem;
     font-weight: 600;
@@ -131,8 +131,8 @@
   }
 
   .large-img {
-    width: 100%;
-    max-height: 400px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 1rem;
@@ -183,6 +183,14 @@
     .artist-detail h2 {
       font-size: 1.5rem;
     }
+
+    .large-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
 
     
   }
