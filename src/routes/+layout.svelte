@@ -6,6 +6,7 @@
   import Header from '$lib/components/Header.svelte';
   import Footeren from '$lib/components/Footeren.svelte';
   import Headeren from '$lib/components/Headeren.svelte';
+  import LanguageSwitch from '$lib/components/LanguageSwitch.svelte';
 
   $: isEnglish = $page.url.pathname.startsWith('/en');
 </script>
@@ -20,6 +21,8 @@
   <main>
     <slot />
   </main>
+
+  <LanguageSwitch />
 
   {#if isEnglish}
     <Footeren />
@@ -68,13 +71,26 @@
     color: #eee;
   }
 
-  :global(h1),
+  :global(h1){
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+  }
+
   :global(h2),
   :global(h3) {
     font-family: var(--font-heading);
     letter-spacing: 1px;
     text-transform: uppercase;
     color: white;
+    margin: 3rem 0 1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #444;
+    padding-bottom: 0.3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   :global(h1){

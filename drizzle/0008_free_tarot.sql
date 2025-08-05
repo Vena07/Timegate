@@ -1,0 +1,1 @@
+ALTER TABLE `sections` ALTER COLUMN "title_en" TO "title_en" text;

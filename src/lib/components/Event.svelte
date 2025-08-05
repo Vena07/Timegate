@@ -116,10 +116,10 @@
     await načtiData();
   }
 </script>
-
+<h2>Eventy + lineup</h2>
 <div class="container">
-  <h2>Eventy + lineup</h2>
-
+  
+<div>
   <h3>Nový event</h3>
   <div class="event-form">
     <label>
@@ -168,7 +168,56 @@
     </label>
   </div>
   <button on:click={vytvořitZáznam}>Vytvořit</button>
+  </div>
 
+  <div>
+  <ul>
+    {#each data as event}
+      <li>
+        <strong>{event.title_cz}</strong> – {event.date} @ {event.location}<br />
+        <small>{event.description_cz}</small>
+
+        <div class="buttons">
+          <button on:click={() => nastavUpravu(event)}>Upravit</button>
+          <button on:click={() => smazatZáznam(event.id)}>Smazat</button>
+        </div>
+
+        {#if zobrazenýLineupEventId === event.id}
+          <h4>Lineup</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Umělec</th>
+                <th>Žánr</th>
+                <th>Čas</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {#each event.lineup as row}
+                <tr>
+                  <td>{row.artist_name}</td>
+                  <td>{row.genre}</td>
+                  <td>{row.time_range}</td>
+                  <td><button on:click={() => smazatLineup(row.id)}>Smazat</button></td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+
+          <h5>Přidat řádek do lineup</h5>
+          <div class="lineup-inputs">
+            <input type="text" bind:value={novýLineup.artist_name} placeholder="Umělec" />
+            <input type="text" bind:value={novýLineup.genre} placeholder="Žánr" />
+            <input type="text" bind:value={novýLineup.time_range} placeholder="Čas" />
+          </div>
+          <button on:click={() => přidatLineup(event.id)}>Přidat</button>
+        {/if}
+      </li>
+    {/each}
+  </ul>
+  </div>
+  <div>
   {#if idZáznamu}
     <h3>Upravit event</h3>
     <div class="event-form">
@@ -218,52 +267,7 @@
     </div>
     <button on:click={upravitZáznam}>Upravit</button>
   {/if}
-
-  <ul>
-    {#each data as event}
-      <li>
-        <strong>{event.title_cz}</strong> – {event.date} @ {event.location}<br />
-        <small>{event.description_cz}</small>
-
-        <div class="buttons">
-          <button on:click={() => nastavUpravu(event)}>Upravit</button>
-          <button on:click={() => smazatZáznam(event.id)}>Smazat</button>
-        </div>
-
-        {#if zobrazenýLineupEventId === event.id}
-          <h4>Lineup</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>Umělec</th>
-                <th>Žánr</th>
-                <th>Čas</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {#each event.lineup as row}
-                <tr>
-                  <td>{row.artist_name}</td>
-                  <td>{row.genre}</td>
-                  <td>{row.time_range}</td>
-                  <td><button on:click={() => smazatLineup(row.id)}>Smazat</button></td>
-                </tr>
-              {/each}
-            </tbody>
-          </table>
-
-          <h5>Přidat řádek do lineup</h5>
-          <div class="lineup-inputs">
-            <input type="text" bind:value={novýLineup.artist_name} placeholder="Umělec" />
-            <input type="text" bind:value={novýLineup.genre} placeholder="Žánr" />
-            <input type="text" bind:value={novýLineup.time_range} placeholder="Čas" />
-          </div>
-          <button on:click={() => přidatLineup(event.id)}>Přidat</button>
-        {/if}
-      </li>
-    {/each}
-  </ul>
+  </div>
 </div>
 
 <style>
@@ -276,10 +280,9 @@
   }
 
   .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    gap: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    
   }
 
   h2, h3, h4, h5 {

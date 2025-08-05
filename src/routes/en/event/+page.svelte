@@ -43,9 +43,9 @@
 
 
 <section class="akce-section">
-  <h2>
+  <h1>
     Event
-  </h2>
+  </h1>
 
   {#if !selectedEvent}
     <div class="events-grid">

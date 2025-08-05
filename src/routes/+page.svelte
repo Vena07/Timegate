@@ -69,7 +69,7 @@
   <div class="hero-content">
    
     <img src="/image.png" alt="">
-    <p>Místo kde hudba žije</p> 
+    <p>Tvoje noc, náš rave</p> 
     
     <button on:click={scrollToAkce}>Vstoupit</button>
   </div>
@@ -110,7 +110,7 @@
 
 <!-- AKCE -->
 <section class="events-list" id="akce">
-  <h1>Akce</h1>
+  <h2>Akce</h2>
   
   {#if loading}
     <Loader/>
@@ -193,9 +193,7 @@
     text-align: center;
     background-color: #1e1f21;
   }
-  .novinky-section h2 {
-    margin-bottom: 1rem;
-  }
+ 
   .novinky-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -298,12 +296,7 @@
     padding-top: 30vh;
   }
 
-  h1 {
-    margin-bottom: 1rem;
-    font-weight: 900;
-    letter-spacing: 4px;
-  }
-
+ 
   p {
     margin-bottom: 2rem;
     font-weight: 300;
@@ -316,12 +309,15 @@
     padding: 0 1rem;
   }
 
-  .events-list h1 {
+  .events-list h2 {
     font-size: 3rem;
     margin-bottom: 2.5rem;
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 3px;
+    margin: none;
+    padding: none;
+    width: none;
   }
 
  .events-grid {
@@ -368,7 +364,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: left;
+    text-align: center;
     width: 100%;
   }
 

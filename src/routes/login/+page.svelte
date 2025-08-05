@@ -79,6 +79,7 @@ form {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  margin-top: 50px;
 }
 input[type="text"],
 input[type="password"]{

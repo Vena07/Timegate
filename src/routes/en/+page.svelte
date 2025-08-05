@@ -110,7 +110,7 @@
 
 <!-- AKCE -->
 <section class="events-list" id="akce">
-  <h1>Event</h1>
+  <h2>Event</h2>
   
   {#if loading}
     <Loader/>
@@ -299,11 +299,7 @@
     padding-top: 30vh;
   }
 
-  h1 {
-    margin-bottom: 1rem;
-    font-weight: 900;
-    letter-spacing: 4px;
-  }
+  
 
   p {
     margin-bottom: 2rem;
@@ -317,7 +313,7 @@
     padding: 0 1rem;
   }
 
-  .events-list h1 {
+  .events-list h2 {
     font-size: 3rem;
     margin-bottom: 2.5rem;
     text-transform: uppercase;
@@ -368,7 +364,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: left;
+    text-align: center;
     width: 100%;
   }
 

@@ -124,12 +124,13 @@
     box-shadow: none;
     display: flex;
     justify-content: center;
-    backdrop-filter: blur(10px);
+    
   }
 
   header.scrolled {
     background: var(--bg-scrolled);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
   }
 
   .container {

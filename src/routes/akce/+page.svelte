@@ -43,7 +43,7 @@
 
 
 <section class="akce-section">
-  <h2>Akce</h2>
+  <h1>Akce</h1>
 
   {#if !selectedEvent}
     <div class="events-grid">
@@ -167,8 +167,16 @@
     background: #1a1a1a;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    text-align: left;
   }
+   
+  .event-detail h3,.event-detail p {
+   border: none;
+   text-align: start;
+   max-width:none;
+  }
+  
+  
+  
 
   .event-detail h2 {
     font-size: 2rem;

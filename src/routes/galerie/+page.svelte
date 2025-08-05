@@ -5,38 +5,51 @@
   let data = [];
   let isLoading = true; 
   let selectedImage = null;
-
-  const tabulka = 'gallery';
-  const sloupce = ['image_url'];
+  let grouped = {};
 
   onMount(async () => {
-    const response = await fetch(`/api/get/${tabulka}`);
+    const response = await fetch('/api/gallery');
     if (response.ok) {
       data = await response.json();
+      grouped = groupBySection(data);
     }
     isLoading = false;
   });
-</script>
 
+  function groupBySection(items) {
+    const result = {};
+    for (const item of items) {
+      const title = item.section_title || 'Nezařazeno';
+      if (!result[title]) {
+        result[title] = [];
+      }
+      result[title].push(item);
+    }
+    return result;
+  }
+</script>
 
 <section class="gallery-page">
   <h1>Galerie</h1>
   {#if isLoading}
-    <Loader/>
+    <Loader />
   {:else if data.length === 0}
     <p>Žádné obrázky nebyly nalezeny.</p>
   {:else}
-  <div class="gallery-grid">
-    {#each data as d}
-      <img src={d.image_url} alt="Photo" on:click={() => selectedImage = d.image_url} />
+    {#each Object.entries(grouped) as [section, images]}
+      <h2>{section}</h2>
+      <div class="gallery-slider">
+        {#each images as d}
+          <img src={d.image_url} alt="Photo" on:click={() => selectedImage = d.image_url} />
+        {/each}
+      </div>
     {/each}
-  </div>
 
-  {#if selectedImage}
-    <div class="modal" on:click={() => selectedImage = null}>
-      <img src={selectedImage} alt="Large view" />
-    </div>
-  {/if}
+    {#if selectedImage}
+      <div class="modal" on:click={() => selectedImage = null}>
+        <img src={selectedImage} alt="Large view" />
+      </div>
+    {/if}
   {/if}
 </section>
 
@@ -54,26 +67,53 @@
     letter-spacing: 2px;
   }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  h2 {
+    
+    margin: 3rem 0 1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #444;
+    padding-bottom: 0.3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .gallery-grid img {
-    width: 100%;
-    height: 200px;
+  .gallery-slider {
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery-slider img {
+    flex: 0 0 auto;
+    width: 260px;
+    height: 180px;
     object-fit: cover;
     border-radius: 12px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    scroll-snap-align: start;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   }
 
-  .gallery-grid img:hover {
+  .gallery-slider img:hover {
     transform: scale(1.05);
+  }
+
+  .gallery-slider::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .gallery-slider::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+  }
+
+  .gallery-slider::-webkit-scrollbar-track {
+    background: #1a1a1a;
   }
 
   .modal {
@@ -88,8 +128,8 @@
   }
 
   .modal img {
-    max-width: 90vw;
-    max-height: 90vh;
+    max-width: 70vw;
+    max-height: 70vh;
     border-radius: 16px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   }

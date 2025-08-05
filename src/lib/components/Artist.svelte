@@ -7,7 +7,7 @@
   let idZáznamu = null;
 
   const tabulka = 'artist';
-  const sloupce = ['name', 'category', 'photo_url', 'bio_cz', 'bio_en', 'instagram_url'];
+  const sloupce = ['name', 'category', 'photo_url', 'bio_cz', 'bio_en', 'instagram_url', 'spotify_url', 'youtube_url', 'soundcloud_url'];
 
   // Převod Google Drive odkazu na přímý obrázek
   function převeďGoogleDriveOdkaz(url) {
@@ -88,9 +88,10 @@
     upravenýZáznam = { ...záznam };
   }
 </script>
-
+ <h2>{tabulka}</h2>
 <div class="container">
-<h2>{tabulka}</h2>
+<div>
+ 
 
 <h3>Vytvořit nový záznam</h3>
 
@@ -116,8 +117,19 @@
 <label>Instagram_url:</label>
 <input type="text" bind:value={novýZáznam.instagram_url} placeholder="instagram_url" />
 
-<button on:click={vytvořitZáznam}>Vytvořit</button>
 
+<label>Youtube_url:</label>
+<input type="text" bind:value={novýZáznam.youtube_url} placeholder="youtube_url" />
+
+<label>spotify_url:</label>
+<input type="text" bind:value={novýZáznam.spotify_url} placeholder="spotify_url" />
+
+<label>soundcloud_url:</label>
+<input type="text" bind:value={novýZáznam.soundcloud_url} placeholder="soundcloud_url" />
+
+<button on:click={vytvořitZáznam}>Vytvořit</button>
+</div>
+<div>
 <h2>Seznam</h2>
 <ul>
   {#each data as záznam}
@@ -133,7 +145,8 @@
     </li>
   {/each}
 </ul>
-
+</div>
+<div>
 <h3>Upravit záznam</h3>
 {#if idZáznamu}
   <div>
@@ -159,23 +172,32 @@
     <label>instagram_url:</label>
     <input type="text" bind:value={upravenýZáznam.instagram_url} placeholder="instagram_url" />
 
+    <label>Youtube_url:</label>
+    <input type="text" bind:value={upravenýZáznam.youtube_url} placeholder="youtube_url" />
+
+    <label>spotify_url:</label>
+    <input type="text" bind:value={upravenýZáznam.spotify_url} placeholder="spotify_url" />
+
+    <label>soundcloud_url:</label>
+    <input type="text" bind:value={upravenýZáznam.soundcloud_url} placeholder="soundcloud_url" />
+
     <button on:click={upravitZáznam}>Upravit</button>
   </div>
 {/if}
+</div>
 </div>
 <style>
 :global(body) {
   background-color: #0e0e0e;
   color: #eee;
   font-family: var(--font-text);
-  margin: 0;
-  padding: 0;
+ 
 }
 
 .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
 }
 
 h2, h3, h4, h5 {
@@ -185,11 +207,14 @@ h2, h3, h4, h5 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+div{
+  margin-left: 20px;
+}
 
 ul {
   list-style: none;
   padding: 0;
-  margin: 2rem 0;
+ 
 }
 
 li {
@@ -243,7 +268,7 @@ button:hover {
 }
 
 table {
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
   margin-top: 1rem;
   font-size: 0.95rem;
@@ -287,7 +312,7 @@ select {
   font-size: 1rem;
   font-family: var(--font-text);
   transition: border-color 0.2s;
-  width: 100%;
+  width: 90%;
 }
 
 input[type="text"]:focus,
@@ -302,16 +327,5 @@ textarea {
   resize: vertical;
 }
 
-@media (max-width: 600px) {
-  .artist-form,
-  .lineup-inputs,
-  .event-form {
-    grid-template-columns: 1fr;
-  }
-
-  button {
-    width: 100%;
-  }
-}
 
 </style>

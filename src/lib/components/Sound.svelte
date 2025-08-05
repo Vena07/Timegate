@@ -76,10 +76,10 @@
     chybyUprava = {};
   }
 </script>
-
+<h2>Soundtracky</h2>
 <div class="container">
-  <h2>Soundtracky</h2>
-
+  
+<div>
   <h3>Nový záznam</h3>
   <div class="form-grid">
     <label>
@@ -95,7 +95,24 @@
     </label>
   </div>
   <button on:click={vytvořitZáznam}>Vytvořit</button>
+  </div>
+  
 
+  <div>
+  <ul class="sound-list">
+    {#each data as item}
+      <li>
+        <strong>{item.title}</strong>
+        <a href={item.soundcloud_url} target="_blank" rel="noopener noreferrer" class="link">{item.soundcloud_url}</a>
+        <div class="buttons">
+          <button on:click={() => nastavUpravu(item)}>Upravit</button>
+          <button on:click={() => smazatZáznam(item.id)}>Smazat</button>
+        </div>
+      </li>
+    {/each}
+  </ul>
+  </div>
+  <div>
   {#if idZáznamu}
     <h3>Upravit záznam</h3>
     <div class="form-grid">
@@ -113,20 +130,9 @@
     </div>
     <button on:click={upravitZáznam}>Upravit</button>
   {/if}
-
-  <ul class="sound-list">
-    {#each data as item}
-      <li>
-        <strong>{item.title}</strong>
-        <a href={item.soundcloud_url} target="_blank" rel="noopener noreferrer" class="link">{item.soundcloud_url}</a>
-        <div class="buttons">
-          <button on:click={() => nastavUpravu(item)}>Upravit</button>
-          <button on:click={() => smazatZáznam(item.id)}>Smazat</button>
-        </div>
-      </li>
-    {/each}
-  </ul>
 </div>
+</div>
+
 
 <style>
   :global(body) {
@@ -138,9 +144,10 @@
   }
 
   .container {
-    max-width: 900px;
     margin: 0 auto;
     padding: 2rem 1rem;
+    display: flex;
+    justify-content: space-around;
   }
 
   h2, h3 {

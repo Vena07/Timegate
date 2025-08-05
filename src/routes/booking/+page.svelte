@@ -26,7 +26,7 @@
 </script>
 
 <section class="booking-section">
-  <h2>Booking</h2>
+  <h1>Booking</h1>
 
   {#if isLoading}
   <Loader/>
@@ -56,7 +56,20 @@
     <div class="artist-detail">
       <img class="large-img" src={selectedArtist.photo_url} alt={selectedArtist.name} />
       <h2>{selectedArtist.name}</h2>
-      <a style="color: white;" href="{selectedArtist.instagram_url}">Instagram</a>
+      <div class="links">
+        {#if selectedArtist.instagram_url}
+          <a style="color: white;" href="{selectedArtist.instagram_url}">Instagram</a>
+        {/if}
+        {#if selectedArtist.youtube_url}
+          | <a style="color: white;" href="{selectedArtist.youtube_url}">Youtube</a>
+        {/if}
+        {#if selectedArtist.spotify_url}
+          | <a style="color: white;" href="{selectedArtist.spotify_url}">Spotify</a>
+        {/if}
+        {#if selectedArtist.soundcloud_url}
+          | <a style="color: white;" href="{selectedArtist.soundcloud_url}">Soundcloud</a>
+        {/if}
+      </div>
       <p>{selectedArtist.bio_cz}</p>
       <button on:click={closeDetail}>← Zpět na přehled</button>
     </div>
@@ -113,6 +126,17 @@
     border-radius: 6px;
     object-fit: cover;
 
+  }
+  
+  .links a {
+    color: #bbb;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: color 0.3s;
+  }
+  .links a:hover {
+    color: #8b5cf6;
+    text-decoration: underline;
   }
   .card p {
     margin-top: 0.5rem;

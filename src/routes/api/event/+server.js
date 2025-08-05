@@ -2,6 +2,7 @@ import { db } from '$lib/server/db'; // adjust if needed
 import { event, lineup } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { json } from '@sveltejs/kit';
+import { desc } from 'drizzle-orm';
 
 export async function GET() {
   const events = await db.select().from(event);

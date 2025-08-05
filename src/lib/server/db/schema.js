@@ -27,6 +27,9 @@ export const artist = sqliteTable('artist', {
   bio_cz: text('bio_cz').notNull(),
   bio_en: text('bio_en').notNull(),
   instagram_url: text('instagram_url'),
+  youtube_url: text('youtube_url'),
+  spotify_url: text('spotify_url'),
+  soundcloud_url: text('soundcloud_url')
 });
 
 export const event = sqliteTable('event', {
@@ -56,9 +59,17 @@ export const sound_track = sqliteTable('sound_track', {
   soundcloud_url: text('soundcloud_url').notNull(),
 });
 
+export const sections = sqliteTable('sections', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  title_cz: text('title_cz').notNull(),
+  title_en: text('title_en')
+});
+
+// Galerie fotky
 export const gallery = sqliteTable('gallery', {
-  id: integer('id', { mode: 'autoIncrement' }).primaryKey(),
+  id: integer('id').primaryKey({ autoIncrement: true }),
   image_url: text('image_url').notNull(),
+  section_id: integer('section_id').references(() => sections.id).notNull()
 });
 
 

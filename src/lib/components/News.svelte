@@ -112,10 +112,10 @@
   }
 </script>
 
-
+ <h2>Novinky</h2>
 <div class="container">
-  <h2>Novinky</h2>
-
+ 
+<div>
   <h3>Nový záznam</h3>
   <div class="form-grid">
     <label>
@@ -147,8 +147,28 @@
   <input type="text" bind:value={novýZáznam.photo_url} placeholder="URL obrázku" class:error={chybyNovy.photo_url} />
 </label>
   </div>
+  
   <button on:click={vytvořitZáznam}>Vytvořit</button>
-
+  </div>
+  
+  <div>
+  <ul class="news-list">
+    {#each data as item}
+      <li>
+        <strong>{item.title_cz}</strong>
+        <p>{item.description_cz}</p>
+        {#if item.photo_url}
+          <img src={item.photo_url} alt="obrázek" class="preview" />
+        {/if}
+        <div class="buttons">
+          <button on:click={() => nastavUpravu(item)}>Upravit</button>
+          <button on:click={() => smazatZáznam(item.id)}>Smazat</button>
+        </div>
+      </li>
+    {/each}
+  </ul>
+  </div>
+  <div>
   {#if idZáznamu}
     <h3>Upravit záznam</h3>
     <div class="form-grid">
@@ -184,22 +204,7 @@
     </div>
     <button on:click={upravitZáznam}>Upravit</button>
   {/if}
-
-  <ul class="news-list">
-    {#each data as item}
-      <li>
-        <strong>{item.title_cz}</strong>
-        <p>{item.description_cz}</p>
-        {#if item.photo_url}
-          <img src={item.photo_url} alt="obrázek" class="preview" />
-        {/if}
-        <div class="buttons">
-          <button on:click={() => nastavUpravu(item)}>Upravit</button>
-          <button on:click={() => smazatZáznam(item.id)}>Smazat</button>
-        </div>
-      </li>
-    {/each}
-  </ul>
+  </div>
 </div>
 
 <style>
@@ -212,9 +217,10 @@
   }
 
   .container {
-    max-width: 900px;
     margin: 0 auto;
     padding: 2rem 1rem;
+    display: flex;
+    justify-content: space-around;
   }
 
   h2, h3 {

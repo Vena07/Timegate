@@ -1,6 +1,3 @@
-<script>
-   import LanguageSwitch from '$lib/components/LanguageSwitch.svelte';
-</script>
 
 <footer class="footer">
   <div class="links">
@@ -14,7 +11,6 @@
     &copy; {new Date().getFullYear()} Timegate | Všechna práva vyhrazena | Made by 
     <a href="https://www.instagram.com/vena_nosek/" target="_blank" rel="noopener noreferrer">Václav Nosek</a>
   </p>
-  <LanguageSwitch />
 </footer>
 
 <style>

@@ -97,6 +97,7 @@
   background: center/cover no-repeat;
 }
 
+
 .ticket-right {
   position: relative;
   flex: 1;
