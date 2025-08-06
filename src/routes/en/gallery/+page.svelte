@@ -38,20 +38,22 @@
   {:else}
     {#each Object.entries(grouped) as [section, images]}
       <h2>{section}</h2>
+      <div class="gallery-wrapper">
       <div class="gallery-slider">
-        {#each images as d, i}
-  <div
+        {#each images as d}
+          <div
     on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && (selectedImage = null)}
     on:click={() => selectedImage = d.image_url}
      role="button"
       tabindex="0"
-    aria-label={`Zobrazit obrázek číslo}`}
+    aria-label={`Zobrazit obrázek číslo`}
     
   >
-    <img src={d.image_url} alt={`Miniatura`} />
+        <img src={d.image_url} alt={`Miniatura `} />
       </div>
-{/each}
+        {/each}
       </div>
+       </div>
     {/each}
 
     {#if selectedImage}
@@ -92,18 +94,22 @@
     margin-right: auto;
   }
 
-  .gallery-slider {
-    display: flex;
-    gap: 1.2rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1000px;
-    justify-content: center;
-  }
+  .gallery-wrapper {
+  max-width: 1000px;
+  margin: 0 auto; /* střed wrapperu */
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-slider {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  min-width: max-content; 
+}
+
 
   .gallery-slider img {
     flex: 0 0 auto;
@@ -115,23 +121,22 @@
     transition: transform 0.3s ease;
     scroll-snap-align: start;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    border: none;
   }
 
   .gallery-slider img:hover {
     transform: scale(1.05);
   }
 
-  .gallery-slider::-webkit-scrollbar {
+  .gallery-wrapper::-webkit-scrollbar {
     height: 8px;
   }
 
-  .gallery-slider::-webkit-scrollbar-thumb {
+  .gallery-wrapper::-webkit-scrollbar-thumb {
     background: #444;
     border-radius: 4px;
   }
 
-  .gallery-slider::-webkit-scrollbar-track {
+  .gallery-wrapper::-webkit-scrollbar-track {
     background: #1a1a1a;
   }
 
