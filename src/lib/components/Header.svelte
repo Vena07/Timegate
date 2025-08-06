@@ -107,11 +107,7 @@
     border-bottom: 2px solid var(--purple);
   }
   
-  .logolink{
-    border-bottom: 2px solid none;
-    text-decoration: none;
-  }
-
+ 
   header {
     position: fixed;
     top: 0;
@@ -145,16 +141,6 @@
     display: flex;
     align-items: center;
     gap: 12px;
-  }
-
-  
-
-  .brand-name {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 800;
-    font-size: 1.8rem;
-    color: white;
-    user-select: none;
   }
 
   /* Desktop nav links */

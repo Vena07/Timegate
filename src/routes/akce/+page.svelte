@@ -62,7 +62,7 @@
       <img src={selectedEvent.poster_url} alt="Plakát" class="modal-image" />
       <h2>{selectedEvent.title_cz}</h2>
       <h3> <Calendar class="icon" /> Datum</h3> <p>{selectedEvent.date}</p>
-      <h3><MapPin class="icon" /> Místo</h3><p><a href="">{selectedEvent.location}</a></p>
+      <h3><MapPin class="icon" /> Místo</h3><p><a href="{selectedEvent.location_url}">{selectedEvent.location}</a></p>
 
       <section class="bio-section">
         <h3>O akci</h3>

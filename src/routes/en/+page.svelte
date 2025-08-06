@@ -69,7 +69,7 @@
   <div class="hero-content">
    
     <img src="/image.png" alt="">
-    <p>A place where music lives</p> 
+    <p>Your night, our rave</p> 
     
     <button on:click={scrollToAkce}>Enter</button><br>
   </div>
@@ -97,8 +97,27 @@
 
 <!-- NOVINKY MODAL -->
 {#if vybranaNovinka}
-  <div class="modal" on:click={zavritModal}>
-    <div class="modal-content" on:click|stopPropagation>
+  <div  class="modal"
+  role="button"
+  tabindex="0"
+  aria-label="Zavřít modal"
+  on:click={zavritModal}
+  on:keydown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      zavritModal(e);
+    }
+  }}>
+    <div class="modal-content" on:click|stopPropagation
+       
+  role="button"
+  tabindex="0"
+  aria-label="Zavřít modal"
+
+  on:keydown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      zavritModal(e);
+    }
+  }}>
       <button class="close-btn" on:click={zavritModal} aria-label="Zavřít modal">&times;</button>
       <h2>{vybranaNovinka.title_en}</h2>
       <p class="modal-date">{new Date(vybranaNovinka.created_at).toLocaleDateString('cs-CZ')}</p>

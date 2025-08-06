@@ -36,7 +36,7 @@
       <h3>RAVE</h3>
       <div class="grid">
         {#each artists.filter(a => a.category === 'RAVE') as artist}
-          <div class="card" on:click={() => openDetail(artist)} role="button" tabindex="0">
+          <div class="card" on:click={() => openDetail(artist)} role="button" tabindex="0"  on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && openDetail(artist)}>
             <img src={artist.photo_url} alt={artist.name} />
             <p>{artist.name}</p>
           </div>
@@ -46,7 +46,7 @@
       <h3>SOUND</h3>
       <div class="grid">
         {#each artists.filter(a => a.category === 'SOUND') as artist}
-          <div class="card" on:click={() => openDetail(artist)} role="button" tabindex="0">
+          <div class="card" on:click={() => openDetail(artist)} role="button" tabindex="0"  on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleClick(e)}>
             <img src={artist.photo_url} alt={artist.name} />
             <p>{artist.name}</p>
           </div>

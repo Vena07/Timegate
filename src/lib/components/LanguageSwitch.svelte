@@ -3,7 +3,7 @@
   $: currentPath = $page.url.pathname;
 
   $: isEnglish = currentPath.startsWith('/en');
-  $: switchTo = isEnglish ? currentPath.replace('/en', '') || '/' : `/en${currentPath}`;
+  $: switchTo = isEnglish ? currentPath.replace('/en', '') || '/' : `/en`;
 </script>
 
 <a href={switchTo} class="lang-switch">

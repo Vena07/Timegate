@@ -95,38 +95,38 @@
 
 <h3>Vytvořit nový záznam</h3>
 
-<label>Name:</label>
+<label>Name:
 <input type="text" bind:value={novýZáznam.name} placeholder="name" />
-
-<label>Category:</label>
+</label>
+<label>Category:
 <select bind:value={novýZáznam.category}>
   <option value="" disabled selected>Vyber kategorii</option>
   <option value="SOUND">SOUND</option>
   <option value="RAVE">RAVE</option>
 </select>
-
-<label>Photo_url:</label>
+</label>
+<label>Photo_url:
 <input type="text" bind:value={novýZáznam.photo_url} placeholder="photo_url" />
-
-<label>Bio_cz:</label>
+</label>
+<label>Bio_cz:
 <input type="text" bind:value={novýZáznam.bio_cz} placeholder="bio_cz" />
-
-<label>Bio_en:</label>
+</label>
+<label>Bio_en:
 <input type="text" bind:value={novýZáznam.bio_en} placeholder="bio_en" />
-
-<label>Instagram_url:</label>
+</label>
+<label>Instagram_url:
 <input type="text" bind:value={novýZáznam.instagram_url} placeholder="instagram_url" />
+</label>
 
-
-<label>Youtube_url:</label>
+<label>Youtube_url:
 <input type="text" bind:value={novýZáznam.youtube_url} placeholder="youtube_url" />
-
-<label>spotify_url:</label>
+</label>
+<label>spotify_url:
 <input type="text" bind:value={novýZáznam.spotify_url} placeholder="spotify_url" />
-
-<label>soundcloud_url:</label>
+</label>
+<label>soundcloud_url:
 <input type="text" bind:value={novýZáznam.soundcloud_url} placeholder="soundcloud_url" />
-
+</label>
 <button on:click={vytvořitZáznam}>Vytvořit</button>
 </div>
 <div>
@@ -149,40 +149,40 @@
 <div>
 <h3>Upravit záznam</h3>
 {#if idZáznamu}
-  <div>
-    <label>name:</label>
+  <form>
+    <label>name:
     <input type="text" bind:value={upravenýZáznam.name} placeholder="name" />
-
-    <label>category:</label>
+    </label>
+    <label>category:
     <select bind:value={upravenýZáznam.category}>
       <option value="" disabled>Vyber kategorii</option>
       <option value="SOUND">SOUND</option>
       <option value="RAVE">RAVE</option>
     </select>
-
-    <label>photo_url:</label>
+    </label>
+    <label>photo_url:
     <input type="text" bind:value={upravenýZáznam.photo_url} placeholder="photo_url" />
-
-    <label>bio_cz:</label>
+    </label>
+    <label>bio_cz:
     <input type="text" bind:value={upravenýZáznam.bio_cz} placeholder="bio_cz" />
-
-    <label>bio_en:</label>
+    </label>
+    <label>bio_en:
     <input type="text" bind:value={upravenýZáznam.bio_en} placeholder="bio_en" />
-
-    <label>instagram_url:</label>
+    </label>
+    <label>instagram_url:
     <input type="text" bind:value={upravenýZáznam.instagram_url} placeholder="instagram_url" />
-
-    <label>Youtube_url:</label>
+    </label>
+    <label>Youtube_url:
     <input type="text" bind:value={upravenýZáznam.youtube_url} placeholder="youtube_url" />
-
-    <label>spotify_url:</label>
+    </label>
+    <label>spotify_url:
     <input type="text" bind:value={upravenýZáznam.spotify_url} placeholder="spotify_url" />
-
-    <label>soundcloud_url:</label>
+    </label>
+    <label>soundcloud_url:
     <input type="text" bind:value={upravenýZáznam.soundcloud_url} placeholder="soundcloud_url" />
-
+      </label>
     <button on:click={upravitZáznam}>Upravit</button>
-  </div>
+  </form>
 {/if}
 </div>
 </div>
@@ -200,7 +200,7 @@
   gap: 50px;
 }
 
-h2, h3, h4, h5 {
+h2, h3{
   color: white;
   margin-top: 2rem;
   font-family: var(--font-heading);
@@ -234,22 +234,6 @@ li:hover {
   transform: translateY(-2px);
 }
 
-strong {
-  font-size: 1.2rem;
-  color: #fff;
-}
-
-small {
-  display: block;
-  margin-top: 0.5rem;
-  color: #aaa;
-}
-
-.buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-}
 
 button {
   background: #3498db;
@@ -267,42 +251,9 @@ button:hover {
   transform: scale(1.02);
 }
 
-table {
-  width: 90%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
 
-th, td {
-  border: 1px solid #444;
-  padding: 0.6rem;
-  text-align: left;
-}
-
-th {
-  background-color: #2a2a2a;
-  color: #fff;
-  font-weight: 600;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-}
-
-td {
-  color: #ddd;
-}
-
-.artist-form, /* přidej container, pokud máš */
-.artist-form label {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-bottom: 1rem;
-}
 
 input[type="text"],
-textarea,
 select {
   padding: 0.6rem;
   border: 1px solid #444;
@@ -316,15 +267,9 @@ select {
 }
 
 input[type="text"]:focus,
-textarea:focus,
 select:focus {
   border-color: #3498db;
   outline: none;
-}
-
-textarea {
-  min-height: 120px;
-  resize: vertical;
 }
 
 

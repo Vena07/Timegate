@@ -144,7 +144,7 @@
     color: white;
   }
 
-  h2, h3 {
+  h3 {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 2rem;
@@ -165,7 +165,7 @@
     text-transform: uppercase;
   }
 
-  input[type="text"], select {
+  input[type="text"]{
     padding: 0.6rem;
     border: 1px solid #444;
     border-radius: 6px;

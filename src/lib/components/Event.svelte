@@ -159,12 +159,12 @@
 
     <label style="grid-column: 1 / -1;">
       Popis CZ
-      <textarea bind:value={novýZáznam.description_cz} placeholder="Popis v češtině" />
+      <textarea bind:value={novýZáznam.description_cz} placeholder="Popis v češtině"></textarea>
     </label>
 
     <label style="grid-column: 1 / -1;">
       Popis EN
-      <textarea bind:value={novýZáznam.description_en} placeholder="Popis v angličtině" />
+      <textarea bind:value={novýZáznam.description_en} placeholder="Popis v angličtině"></textarea>
     </label>
   </div>
   <button on:click={vytvořitZáznam}>Vytvořit</button>
@@ -257,12 +257,12 @@
 
       <label style="grid-column: 1 / -1;">
         Popis CZ
-        <textarea bind:value={upravenýZáznam.description_cz} placeholder="Popis v češtině" />
+        <textarea bind:value={upravenýZáznam.description_cz} placeholder="Popis v češtině"></textarea>
       </label>
 
       <label style="grid-column: 1 / -1;">
         Popis EN
-        <textarea bind:value={upravenýZáznam.description_en} placeholder="Popis v angličtině" />
+        <textarea bind:value={upravenýZáznam.description_en} placeholder="Popis v angličtině"></textarea>
       </label>
     </div>
     <button on:click={upravitZáznam}>Upravit</button>
@@ -397,8 +397,7 @@
 
 
 input[type="text"],
-textarea,
-select {
+textarea{
   padding: 0.6rem;
   border: 1px solid #444;
   border-radius: 6px;
@@ -411,8 +410,7 @@ select {
 }
 
   input[type="text"]:focus,
-textarea:focus,
-select:focus {
+textarea:focus{
   border-color: #3498db;
   outline: none;
 }

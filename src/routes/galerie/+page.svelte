@@ -40,13 +40,29 @@
       <h2>{section}</h2>
       <div class="gallery-slider">
         {#each images as d}
-          <img src={d.image_url} alt="Photo" on:click={() => selectedImage = d.image_url} />
+          <div
+    on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && (selectedImage = null)}
+    on:click={() => selectedImage = d.image_url}
+     role="button"
+      tabindex="0"
+    aria-label={`Zobrazit obrázek číslo`}
+    
+  >
+    <img src={d.image_url} alt={`Miniatura `} />
+      </div>
         {/each}
       </div>
     {/each}
 
     {#if selectedImage}
-      <div class="modal" on:click={() => selectedImage = null}>
+      <div
+          class="modal"
+          role="button"
+          tabindex="0"
+          aria-label="Zavřít obrázek"
+          on:click={() => selectedImage = null}
+          on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && (selectedImage = null)}
+        >
         <img src={selectedImage} alt="Large view" />
       </div>
     {/if}
@@ -85,6 +101,10 @@
     padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    justify-content: center;
   }
 
   .gallery-slider img {

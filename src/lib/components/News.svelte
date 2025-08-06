@@ -132,13 +132,13 @@
 
     <label>
       Popis CZ
-      <textarea bind:value={novýZáznam.description_cz} placeholder="Popis v češtině" class:error={chybyNovy.description_cz} />
+      <textarea bind:value={novýZáznam.description_cz} placeholder="Popis v češtině" class:error={chybyNovy.description_cz}></textarea>
       {#if chybyNovy.description_cz}<p class="error">{chybyNovy.description_cz}</p>{/if}
     </label>
 
     <label>
       Popis EN
-      <textarea bind:value={novýZáznam.description_en} placeholder="Popis v angličtině" class:error={chybyNovy.description_en} />
+      <textarea bind:value={novýZáznam.description_en} placeholder="Popis v angličtině" class:error={chybyNovy.description_en}></textarea>
       {#if chybyNovy.description_en}<p class="error">{chybyNovy.description_en}</p>{/if}
     </label>
 
@@ -174,25 +174,25 @@
     <div class="form-grid">
       <label>
         Název CZ
-        <input type="text" bind:value={upravenýZáznam.title_cz} placeholder="Název v češtině" class:error={chybyUprava.title_cz} />
+        <input type="text" bind:value={upravenýZáznam.title_cz} placeholder="Název v češtině" class:error={chybyUprava.title_cz}>
         {#if chybyUprava.title_cz}<p class="error">{chybyUprava.title_cz}</p>{/if}
       </label>
 
       <label>
         Název EN
-        <input type="text" bind:value={upravenýZáznam.title_en} placeholder="Název v angličtině" class:error={chybyUprava.title_en} />
+        <input type="text" bind:value={upravenýZáznam.title_en} placeholder="Název v angličtině" class:error={chybyUprava.title_en}>
         {#if chybyUprava.title_en}<p class="error">{chybyUprava.title_en}</p>{/if}
       </label>
 
       <label>
         Popis CZ
-        <textarea bind:value={upravenýZáznam.description_cz} placeholder="Popis v češtině" class:error={chybyUprava.description_cz} />
+        <textarea bind:value={upravenýZáznam.description_cz} placeholder="Popis v češtině" class:error={chybyUprava.description_cz}></textarea>
         {#if chybyUprava.description_cz}<p class="error">{chybyUprava.description_cz}</p>{/if}
       </label>
 
       <label>
         Popis EN
-        <textarea bind:value={upravenýZáznam.description_en} placeholder="Popis v angličtině" class:error={chybyUprava.description_en} />
+        <textarea bind:value={upravenýZáznam.description_en} placeholder="Popis v angličtině" class:error={chybyUprava.description_en}></textarea>
         {#if chybyUprava.description_en}<p class="error">{chybyUprava.description_en}</p>{/if}
       </label>
 
@@ -251,8 +251,7 @@
   }
 
   input[type="text"],
-  textarea,
-  input[type="file"] {
+  textarea {
     background-color: #111;
     border: 1px solid #444;
     border-radius: 6px;
@@ -264,8 +263,7 @@
   }
 
   input[type="text"]:focus,
-  textarea:focus,
-  input[type="file"]:focus {
+  textarea:focus{
     border-color: #777;
     outline: none;
   }
@@ -277,8 +275,7 @@
   }
 
   input.error,
-  textarea.error,
-  input[type="file"].error {
+  textarea.error{
     border-color: #ff5a5a;
   }
 

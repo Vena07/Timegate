@@ -97,15 +97,41 @@
 
 <!-- NOVINKY MODAL -->
 {#if vybranaNovinka}
-  <div class="modal" on:click={zavritModal}>
-    <div class="modal-content" on:click|stopPropagation>
-      <button class="close-btn" on:click={zavritModal} aria-label="Zavřít modal">&times;</button>
-      <h2>{vybranaNovinka.title_cz}</h2>
-      <p class="modal-date">{new Date(vybranaNovinka.created_at).toLocaleDateString('cs-CZ')}</p>
-      <p>{vybranaNovinka.description_cz}</p>
-      <img  src={vybranaNovinka.photo_url} alt={"Obrázek novinky " + vybranaNovinka.title_cz} />
-    </div>
+ <div
+  class="modal"
+  role="button"
+  tabindex="0"
+  aria-label="Zavřít modal"
+  on:click={zavritModal}
+  on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && zavritModal(e)}
+>
+  <div
+  class="modal-content"
+  role="button"
+  tabindex="0"
+  aria-label="Zavřít modal"
+  on:click={zavritModal}
+  on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && zavritModal(e)}
+>
+    <button
+      class="close-btn"
+      on:click={zavritModal}
+      aria-label="Zavřít modal"
+    >
+      &times;
+    </button>
+    <h2>{vybranaNovinka.title_cz}</h2>
+    <p class="modal-date">
+      {new Date(vybranaNovinka.created_at).toLocaleDateString('cs-CZ')}
+    </p>
+    <p>{vybranaNovinka.description_cz}</p>
+    <img
+      src={vybranaNovinka.photo_url}
+      alt={"Obrázek novinky " + vybranaNovinka.title_cz}
+    />
   </div>
+</div>
+
 {/if}
 
 <!-- AKCE -->
@@ -163,8 +189,8 @@
       {#each soundTracks as track}
         <div class="soundcloud-item">
           <iframe
-            title={track.title}
-            width="100%"
+          title="{track.title}"  
+          width="100%"
             height="166"
             scrolling="no"
             frameborder="no"
