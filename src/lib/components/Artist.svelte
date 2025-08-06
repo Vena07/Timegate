@@ -45,6 +45,7 @@
       const nový = await response.json();
       data.push(nový);
       novýZáznam = {};
+      data = await response.json();
     }
   }
 
