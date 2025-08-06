@@ -236,6 +236,11 @@
   }
   .novinka-karta h3 {
     margin-bottom: 0.5rem;
+
+  }
+   .novinky-section h2 {
+    
+font-size: 3rem;
   }
   .novinka-karta p {
     flex-grow: 1;
@@ -262,6 +267,7 @@
     overflow-y: auto;
     color: white;
     position: relative;
+    margin: 0 20px;
   }
   .modal-content img {
     width: 100%;
