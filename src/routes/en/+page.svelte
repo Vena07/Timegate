@@ -173,7 +173,7 @@
 <!-- SOUND -->
 
 
-  <section class="music-section" id="hudba">
+<section class="music-section" id="hudba">
   <h2>SOUND</h2>
   {#if loading}
     <Loader/>
@@ -181,22 +181,14 @@
     <div class="soundcloud-grid">
       {#each soundTracks as track}
         <div class="soundcloud-item">
-          <iframe
-            title={track.title}
-            width="100%"
-            height="166"
-            scrolling="no"
-            frameborder="no"
-            allow="autoplay"
-            src={track.soundcloud_url}
-          ></iframe>
-          <p>{track.title}</p>
+         {@html track.soundcloud_url}
         </div>
       {/each}
     </div>
     <a class="link" href="https://soundcloud.com/timegate_sound?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">More sounds here</a>
   {/if}
 </section>
+
 
 
 <style>
