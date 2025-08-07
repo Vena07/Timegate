@@ -360,7 +360,7 @@
     object-fit: cover;
     transition: transform 0.3s ease;
     width: 330px;
-    height: 90%;
+
     margin: 40px 0;
   }
 
@@ -373,7 +373,6 @@
     width: 100%;
     height: 300px; /* Fixní výška pro jednotnost */
     border-radius: 12px;
-    margin-bottom: 1rem;
     object-fit: cover;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   }
@@ -382,10 +381,10 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+    text-align: start;
     width: 100%;
-  }
+ }
+
 
 
   .event-info h2 {

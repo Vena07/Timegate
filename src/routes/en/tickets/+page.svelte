@@ -163,7 +163,7 @@
 @media (max-width: 767px) {
   .ticket {
     flex-direction: column;
-    max-width: 400px;
+    max-width: 380px;
   }
 
   .ticket-left {

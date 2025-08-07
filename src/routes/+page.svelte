@@ -347,7 +347,7 @@ font-size: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
     gap: 2rem;
-    place-items: center;
+    place-items:center;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -364,7 +364,7 @@ font-size: 3rem;
     object-fit: cover;
     transition: transform 0.3s ease;
     width: 330px;
-    height: 90%;
+
     margin: 40px 0;
   }
 
@@ -377,7 +377,6 @@ font-size: 3rem;
     width: 100%;
     height: 300px; /* Fixní výška pro jednotnost */
     border-radius: 12px;
-    margin-bottom: 1rem;
     object-fit: cover;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   }
@@ -386,10 +385,10 @@ font-size: 3rem;
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+   
+    text-align: start;
     width: 100%;
-  }
+ }
 
 
   .event-info h2 {
@@ -473,11 +472,7 @@ font-size: 3rem;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
   }
 
-  .soundcloud-item p {
-    margin-top: 1rem;
-    font-weight: 300;
-    font-size: 1rem;
-  }
+
 
   .link,button {
     display: inline-block;
