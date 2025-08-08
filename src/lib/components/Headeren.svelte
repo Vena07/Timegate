@@ -107,11 +107,10 @@
     border-bottom: 2px solid var(--purple);
   }
   
-
+ 
   header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     background: var(--bg-transparent);
     padding: 20px 0;
@@ -131,11 +130,10 @@
 
   .container {
     width: 100%;
-    margin: 0 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
   }
 
   .logo-container {
@@ -143,10 +141,6 @@
     align-items: center;
     gap: 12px;
   }
-
-  
-
- 
 
   /* Desktop nav links */
   .nav-links {
@@ -216,14 +210,14 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
-    align-items: center; /* vycentrovat odkazy */
-    justify-content: center;
     backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
   }
 
-  .menu p {
-    margin: 1rem 0;
-  }
+  
 
   .menu a {
     position: relative;
@@ -234,6 +228,8 @@
     transition: color 0.3s ease, transform 0.2s ease;
     padding-bottom: 5px;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+   margin: 0;
   }
 
   /* Stejný hover efekt pro mobilní menu */
@@ -288,9 +284,6 @@
     }
     .hamburger-wrapper {
       display: block;
-    }
-    header {
-      padding: 15px 20px;
     }
   }
 </style>

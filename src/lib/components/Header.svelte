@@ -62,15 +62,14 @@
   {#if open}
     <div class="menu">
       {#each links as { name, url }, i}
-        <p transition:fly={{ y: -15, delay: 50 * i }}>
           <a 
             href={url} 
+            transition:fly={{ y: -15, delay: 50 * i }}
             class:selected={$page.url.pathname === url} 
             on:click={closeMenu}
           >
             {name}
           </a>
-        </p>
       {/each}
     </div>
   {/if}
@@ -111,7 +110,6 @@
   header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     background: var(--bg-transparent);
     padding: 20px 0;
@@ -131,7 +129,7 @@
 
   .container {
     width: 100%;
-    margin: 0 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -211,14 +209,14 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
+    backdrop-filter: blur(10px);
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px);
+    gap: 20px;
+    
   }
 
-  .menu p {
-    margin: 1rem 0;
-  }
+  
 
   .menu a {
     position: relative;
@@ -230,6 +228,7 @@
     padding-bottom: 5px;
     overflow: hidden;
     backdrop-filter: blur(10px);
+   margin: 0;
   }
 
   /* Stejný hover efekt pro mobilní menu */
@@ -284,9 +283,6 @@
     }
     .hamburger-wrapper {
       display: block;
-    }
-    header {
-      padding: 15px 20px;
     }
   }
 </style>
