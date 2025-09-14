@@ -59,7 +59,7 @@
   });
 </script>
 
-<!-- pak v HTML už jen kontroluj {#if loading} pro celý fetch -->
+
 
 
 
@@ -221,12 +221,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+ 
   }
   .novinka-karta h3 {
     margin-bottom: 0.5rem;
   }
   .novinka-karta p {
     flex-grow: 1;
+    background-color: #1e1f21;
   }
 
 
@@ -364,7 +366,7 @@
   .poster {
     width: 100%;
     height: 300px; /* Fixní výška pro jednotnost */
-    border-radius: 12px;
+    border-radius: 10px;
     object-fit: cover;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   }

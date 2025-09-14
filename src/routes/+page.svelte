@@ -84,7 +84,7 @@
   {:else}
     <div class="novinky-grid">
       {#each novinky as novinka}
-        <article class="novinka-karta" style="background-image: url({novinka.photo_url});">
+        <article class="novinka-karta" style=" background-image: url({novinka.photo_url})">
           <h3>{novinka.title_cz}</h3>
           <p>{novinka.description_cz.slice(0, 100)}{novinka.description_cz.length > 100 ? '...' : ''}</p>
           <button  on:click={() => otevritModal(novinka)}>Zjistit více</button>
@@ -222,8 +222,10 @@
     padding: 1rem;
     color: white;
     display: flex;
+    backdrop-filter: blur(50px);
     flex-direction: column;
     justify-content: space-between;
+    
   }
   .novinka-karta h3 {
     margin-bottom: 0.5rem;
@@ -376,7 +378,7 @@ font-size: 3rem;
   .poster {
     width: 100%;
     height: 300px; /* Fixní výška pro jednotnost */
-    border-radius: 12px;
+    border-radius: 10px;
     object-fit: cover;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   }

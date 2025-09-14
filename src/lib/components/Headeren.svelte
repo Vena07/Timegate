@@ -118,7 +118,6 @@
     box-shadow: none;
     display: flex;
     justify-content: center;
-    
   }
 
   header.scrolled {

@@ -123,6 +123,7 @@
   header.scrolled {
     background: var(--bg-scrolled);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
   }
 
   .container {
@@ -131,7 +132,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    backdrop-filter: blur(10px);
   }
 
   .logo-container {
