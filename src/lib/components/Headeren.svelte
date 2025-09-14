@@ -26,7 +26,6 @@
   const links = [
     { name: "Home", url: "/en" },
     { name: "Event", url: "/en/event" },
-    { name: "Merch", url: "/ak" },
     { name: "Tickets", url: "/en/tickets" },
     { name: "Gallery", url: "/en/gallery" },
     { name: "Booking", url: "/en/booking" },
@@ -171,7 +170,7 @@
 
   .nav-links a::before {
     left: 0;
-    background: var(--purple);
+  
     transition-delay: 0.1s;
   }
 
@@ -210,7 +209,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(10px);
+   
     align-items: center;
     justify-content: center;
     gap: 20px;

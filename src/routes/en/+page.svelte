@@ -460,12 +460,6 @@
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
   }
 
-  .soundcloud-item p {
-    margin-top: 1rem;
-    font-weight: 300;
-    font-size: 1rem;
-  }
-
   .link,button {
     display: inline-block;
     background-color: #fff;

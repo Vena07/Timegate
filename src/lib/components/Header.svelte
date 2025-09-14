@@ -26,7 +26,6 @@
   const links = [
     { name: "Home", url: "/" },
     { name: "Akce", url: "/akce" },
-    { name: "Merch", url: "/ak" },
     { name: "Vstupenky", url: "/vstupenky" },
     { name: "Galerie", url: "/galerie" },
     { name: "Booking", url: "/booking" },
@@ -124,7 +123,6 @@
   header.scrolled {
     background: var(--bg-scrolled);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
   }
 
   .container {
@@ -133,6 +131,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    backdrop-filter: blur(10px);
   }
 
   .logo-container {
@@ -199,12 +198,12 @@
 
   /* Mobile menu dropdown */
   .menu {
-    position: absolute;
+    position: fixed;
     top: 100%;
     left: 0;
     width: 100%;
-    background: var(--bg-scrolled);
-    text-align: center;
+    background: rgba(14, 14, 14, 0.9);
+    
     padding: 1.2em 0;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     display: flex;
@@ -213,6 +212,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    
     
   }
 
@@ -227,7 +227,6 @@
     transition: color 0.3s ease, transform 0.2s ease;
     padding-bottom: 5px;
     overflow: hidden;
-    backdrop-filter: blur(10px);
    margin: 0;
   }
 
