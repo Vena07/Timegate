@@ -3,8 +3,9 @@
   import { Calendar, MapPin } from 'lucide-svelte';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
-
+import Loader from '$lib/components/Loader.svelte';
   let events = [];
+  let isLoading = true; 
   let selectedEvent = null;
 
   $: queryId = $page.url.searchParams.get('id');
@@ -28,6 +29,7 @@
         lineup: lineupData.filter(line => line.event_id === event.id)
       };
     });
+    isLoading = false;
   });
 
   function openDetail(event) {
@@ -44,7 +46,11 @@
 
 <section class="akce-section">
   <h1>Akce</h1>
-
+   {#if isLoading}
+    <Loader />
+  {:else if events.length === 0}
+    <p>Žádné akce nebyly nalezeny.</p>
+  {:else}
   {#if !selectedEvent}
     <div class="events-grid">
       {#each events as event}
@@ -72,6 +78,9 @@
       <section class="lineup-section">
         <h3>Program / Line-up</h3>
         <div class="table-wrapper">
+          {#if selectedEvent.lineup.length === 0}
+            <p>Bude upřesněno</p>
+          {:else}
           <table>
             <thead>
               <tr>
@@ -90,16 +99,18 @@
               {/each}
             </tbody>
           </table>
+        {/if}
         </div>
       </section>
 
       <div class="links">
-        <a class="link" href={selectedEvent.ticketUrl} target="_blank" rel="noopener noreferrer">
+        <a class="link" href="{selectedEvent.ticket_url}" target="_blank">
           Koupit vstupenku
         </a>
         <button on:click={closeDetail}>← Zpět na všechny akce</button>
       </div>
     </div>
+  {/if}
   {/if}
 </section>
 
@@ -139,26 +150,23 @@
   }
 
   .poster {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: auto;
+    height: 300px;
+    
     border-radius: 10px;
     margin-bottom: 1rem;
   }
 
   .event-card h3 {
-    margin: 0.5rem 0;
+ 
     font-weight: 600;
   }
 
   .event-card p {
     font-weight: 300;
-    margin: 0.2rem 0;
+    width: auto;
      
   }
-
-
-  
 
   .event-detail {
     max-width: 900px;
@@ -175,9 +183,6 @@
    max-width:none;
   }
   
-  
-  
-
   .event-detail h2 {
     font-size: 2rem;
     margin-bottom: 1rem;

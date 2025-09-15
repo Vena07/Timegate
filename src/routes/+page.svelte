@@ -377,9 +377,9 @@ font-size: 3rem;
 
   .poster {
     width: 100%;
-    height: 300px; /* Fixní výška pro jednotnost */
+    height: 500px; /* Fixní výška pro jednotnost */
     border-radius: 10px;
-    object-fit: cover;
+  
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   }
 

@@ -55,8 +55,9 @@
     </div>
   {:else}
     <div class="artist-detail">
-      <img class="large-img" src={selectedArtist.photo_url} alt={selectedArtist.name} />
       <h2>{selectedArtist.name}</h2>
+      <img class="large-img" src={selectedArtist.photo_url} alt={selectedArtist.name} />
+      
       <div class="links">
         {#if selectedArtist.instagram_url}
           <a style="color: white;" href="{selectedArtist.instagram_url}">Instagram</a>
@@ -122,10 +123,10 @@
   }
 
  .card img {
-    width: 230px;
-    height: 230px;
+    width: 330px;
+    height: 430px;
     border-radius: 6px;
-    object-fit: cover;
+    object-fit:contain;
 
   }
   
@@ -156,8 +157,8 @@
 
   .large-img {
     width: 500px;
-    height: 500px;
-    object-fit: cover;
+    height: 700px;
+    object-fit:cover;
     border-radius: 10px;
     margin-bottom: 1rem;
   }
@@ -168,7 +169,6 @@
   }
 
   .artist-detail p {
-    font-size: 1rem;
     margin-bottom: 2rem;
   }
 
@@ -219,4 +219,3 @@
     
   }
 </style>
-
