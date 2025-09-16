@@ -100,7 +100,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    max-width: 1100px;
+    max-width:1300px;
     margin: 0 auto 2rem;
   }
 
@@ -121,8 +121,8 @@
   }
 
  .card img {
-    width: 330px;
-    height: 430px;
+    width: 230px;
+    height: 330px;
     border-radius: 6px;
     object-fit:contain;
 
