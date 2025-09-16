@@ -100,7 +100,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    max-width:1300px;
+    max-width:1000px;
     margin: 0 auto 2rem;
   }
 
