@@ -51,7 +51,8 @@
     <div class="contact-info">
       <div class="contact-item">
         <Phone class="icon" />
-        <strong>Telefon:</strong> <a href="tel:+420123456789">+420 123 456 789</a>
+        <strong>Telefon:</strong> <a href="tel:+420123456789">+420 776 519 911
+</a>
       </div>
     <div class="contact-item">
         <Mail class="icon" />
