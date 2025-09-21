@@ -155,8 +155,7 @@
 
   .large-img {
     width: 500px;
-    height: 700px;
-    object-fit:cover;
+    height: 750px;
     border-radius: 10px;
     margin-bottom: 1rem;
   }
@@ -208,8 +207,8 @@
 
     .large-img {
     width: 250px;
-    height: 250px;
-    object-fit: cover;
+    height: 400px;
+   
     border-radius: 10px;
     margin-bottom: 1rem;
   }

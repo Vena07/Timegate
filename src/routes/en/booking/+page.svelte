@@ -102,7 +102,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    max-width: 1100px;
+    max-width:1000px;
     margin: 0 auto 2rem;
   }
 
@@ -123,8 +123,8 @@
   }
 
  .card img {
-    width: 330px;
-    height: 430px;
+    width: 230px;
+    height: 330px;
     border-radius: 6px;
     object-fit:contain;
 
@@ -157,8 +157,7 @@
 
   .large-img {
     width: 500px;
-    height: 700px;
-    object-fit:cover;
+    height: 750px;
     border-radius: 10px;
     margin-bottom: 1rem;
   }
@@ -210,12 +209,13 @@
 
     .large-img {
     width: 250px;
-    height: 250px;
-    object-fit: cover;
+    height: 400px;
+   
     border-radius: 10px;
     margin-bottom: 1rem;
   }
 
     
   }
+  
 </style>
