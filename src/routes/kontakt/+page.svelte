@@ -51,12 +51,12 @@
     <div class="contact-info">
       <div class="contact-item">
         <Phone class="icon" />
-        <strong>Telefon:</strong> <a href="tel:+420123456789">+420 776 519 911
+        <strong>Telefon:</strong> <a href="tel:+420776519911">+420 776 519 911
 </a>
       </div>
     <div class="contact-item">
         <Mail class="icon" />
-        <strong>Email:</strong> <a href="mailto:info@timegate.cz">ttimegate@gmail.com</a>
+        <strong>Email:</strong> <a href="mailto:ttimegate@gmail.com">ttimegate@gmail.com</a>
       </div>
     </div>
   </div>

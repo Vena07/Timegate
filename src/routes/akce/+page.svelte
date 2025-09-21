@@ -55,7 +55,7 @@ import Loader from '$lib/components/Loader.svelte';
     <div class="events-grid">
       {#each events as event}
         <div class="event-card">
-          <img class="poster" src={event.poster_url} alt={"Plakát akce " + event.title} />
+          <img class="poster" src={event.ticketpic_url} alt={"Plakát akce " + event.title} />
           <h3>{event.title_cz}</h3>
           <p><Calendar class="icon" /> {event.date}</p>
           <p><MapPin class="icon" /> <a style="text-decoration: underline;" href="{event.location_url}"> {event.location}</a></p>
@@ -65,14 +65,14 @@ import Loader from '$lib/components/Loader.svelte';
     </div>
   {:else}
     <div class="event-detail">
-      <img src={selectedEvent.poster_url} alt="Plakát" class="modal-image" />
+      <img src={selectedEvent.bannerpic_url} alt="Plakát" class="modal-image" />
       <h2>{selectedEvent.title_cz}</h2>
       <h3> <Calendar class="icon" /> Datum</h3> <p>{selectedEvent.date}</p>
       <h3><MapPin class="icon" /> Místo</h3><p><a href="{selectedEvent.location_url}">{selectedEvent.location}</a></p>
 
       <section class="bio-section">
         <h3>O akci</h3>
-        <p>{selectedEvent.description_cz}</p>
+        <p>{ selectedEvent.description_cz}</p>
       </section>
 
       <section class="lineup-section">
@@ -85,8 +85,7 @@ import Loader from '$lib/components/Loader.svelte';
             <thead>
               <tr>
                 
-                  <th>Čas</th>
-                
+                <th>Čas</th>
                 <th>DJ</th>
                 <th>Žánr</th>
               </tr>

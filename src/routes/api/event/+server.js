@@ -1,12 +1,18 @@
-import { db } from '$lib/server/db'; // adjust if needed
+import { db } from '$lib/server/db';
 import { event, lineup } from '$lib/server/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, asc, gte } from 'drizzle-orm';
 import { json } from '@sveltejs/kit';
-import { desc } from 'drizzle-orm';
 
 export async function GET() {
-  const events = await db.select().from(event);
-  
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+  // Načíst pouze nadcházející eventy řazené od nejbližšího
+  const events = await db
+    .select()
+    .from(event)
+    .where(gte(event.date, today))
+    .orderBy(asc(event.date));
+
   // Načíst lineup pro každý event
   const allLineups = await db.select().from(lineup);
   const enrichedEvents = events.map(e => ({
@@ -32,9 +38,25 @@ export async function POST({ request }) {
 }
 
 export async function PUT({ request }) {
-  const { id, data } = await request.json();
-  const [updated] = await db.update(event).set(data).where(eq(event.id, id)).returning();
-  return json(updated);
+  const { id, data, type } = await request.json();
+
+  if (type === 'update_lineup') {
+    // Úprava konkrétního řádku lineup
+    const [updatedLineup] = await db
+      .update(lineup)
+      .set(data)
+      .where(eq(lineup.id, id))
+      .returning();
+    return json(updatedLineup);
+  } else {
+    // Úprava samotného eventu
+    const [updatedEvent] = await db
+      .update(event)
+      .set(data)
+      .where(eq(event.id, id))
+      .returning();
+    return json(updatedEvent);
+  }
 }
 
 export async function DELETE({ request }) {

@@ -58,7 +58,7 @@ let isLoading = true;
     <div class="events-grid">
       {#each events as event}
         <div class="event-card">
-          <img class="poster" src={event.poster_url} alt={"Plakát akce " + event.title} />
+          <img class="poster" src={event.ticketpic_url} alt={"Plakát akce " + event.title} />
           <h3>{event.title_en}</h3>
           <p><Calendar class="icon" /> {event.date}</p>
           <p><MapPin class="icon" /> <a style="text-decoration: underline;" href="{event.location_url}"> {event.location}</a></p>
@@ -68,7 +68,7 @@ let isLoading = true;
     </div>
   {:else}
     <div class="event-detail">
-      <img src={selectedEvent.poster_url} alt="Plakát" class="modal-image" />
+      <img src={selectedEvent.bannerpic_url} alt="Plakát" class="modal-image" />
       <h2>{selectedEvent.title_en}</h2>
       <h3> <Calendar class="icon" /> Date</h3> <p>{selectedEvent.date}</p>
       <h3><MapPin class="icon" /> Location</h3><p><a href="{selectedEvent.location_url}">{selectedEvent.location}</a></p>
@@ -107,9 +107,15 @@ let isLoading = true;
       </section>
 
       <div class="links">
-        <a class="link" href={selectedEvent.ticket_url} target="_blank" rel="noopener noreferrer">
-          Buy a ticket
+        {#if selectedEvent.ticket_url.length === 0} 
+        <p class="link">
+          Available soon
+        </p>
+        {:else}
+          <a class="link" href="{selectedEvent.ticket_url}" target="_blank">
+          Buy ticket
         </a>
+        {/if}
         <button on:click={closeDetail}>← Back to all events</button>
       </div>
     </div>

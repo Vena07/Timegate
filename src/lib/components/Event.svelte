@@ -107,6 +107,17 @@
     }
   }
 
+  async function upravitLineupRow(eventId, index) {
+  const row = data.find(e => e.id === eventId).lineup[index];
+  await fetch('/api/event', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'update_lineup', id: row.id, data: row })
+  });
+  await načtiData();
+}
+
+
   async function smazatLineup(id) {
     await fetch('/api/event', {
       method: 'DELETE',
@@ -148,9 +159,18 @@
       </label>
 
     <label>
-      Photo_URL
+      Homepage poster: 330x500
       <input type="text" bind:value={novýZáznam.poster_url} placeholder="https://..." />
     </label>
+      <label>
+      Eventy poster/ticket: 300x300
+      <input type="text" bind:value={novýZáznam.ticketpic_url} placeholder="https://..." />
+    </label>
+      <label>
+      Eventy modal banner: 790x 400
+      <input type="text" bind:value={novýZáznam.bannerpic_url} placeholder="https://..." />
+    </label>
+   
 
     <label>
       Ticket URL
@@ -170,7 +190,7 @@
   <button on:click={vytvořitZáznam}>Vytvořit</button>
   </div>
 
-  <div>
+  <div class="seznam">
   <ul>
     {#each data as event}
       <li>
@@ -178,8 +198,8 @@
         <small>{event.description_cz}</small>
 
         <div class="buttons">
-          <button on:click={() => nastavUpravu(event)}>Upravit</button>
-          <button on:click={() => smazatZáznam(event.id)}>Smazat</button>
+          <button on:click={() => nastavUpravu(event)}>Upravit event</button>
+          <button on:click={() => smazatZáznam(event.id)}>Smazat event</button>
         </div>
 
         {#if zobrazenýLineupEventId === event.id}
@@ -194,32 +214,35 @@
               </tr>
             </thead>
             <tbody>
-              {#each event.lineup as row}
+              {#each event.lineup as row, index}
                 <tr>
-                  <td>{row.artist_name}</td>
-                  <td>{row.genre}</td>
-                  <td>{row.time_range}</td>
-                  <td><button on:click={() => smazatLineup(row.id)}>Smazat</button></td>
+                  <td><input type="text" bind:value={event.lineup[index].artist_name} /></td>
+                  <td><input type="text" bind:value={event.lineup[index].genre} /></td>
+                  <td><input type="text" bind:value={event.lineup[index].time_range} /></td>
+                  <td>
+                    <button on:click={() => upravitLineupRow(event.id, index)}>Upravit</button>
+                    <button on:click={() => smazatLineup(row.id)}>Smazat</button>
+                  </td>
                 </tr>
               {/each}
             </tbody>
           </table>
 
-          <h5>Přidat řádek do lineup</h5>
           <div class="lineup-inputs">
             <input type="text" bind:value={novýLineup.artist_name} placeholder="Umělec" />
             <input type="text" bind:value={novýLineup.genre} placeholder="Žánr" />
             <input type="text" bind:value={novýLineup.time_range} placeholder="Čas" />
+            <button on:click={() => přidatLineup(event.id)}>Přidat</button>
           </div>
-          <button on:click={() => přidatLineup(event.id)}>Přidat</button>
         {/if}
       </li>
     {/each}
   </ul>
-  </div>
+</div>
+
   <div>
-  {#if idZáznamu}
-    <h3>Upravit event</h3>
+ 
+    <h3>Upravit event</h3> {#if idZáznamu}
     <div class="event-form">
       <label>
         Název CZ
@@ -246,8 +269,16 @@
       </label>
 
       <label>
-        Poster URL
+        Homepage poster: 330x500
         <input type="text" bind:value={upravenýZáznam.poster_url} placeholder="https://..." />
+      </label>
+       <label>
+        Eventy poster/ticket: 300x300
+        <input type="text" bind:value={upravenýZáznam.ticketpic_url} placeholder="https://..." />
+      </label>
+       <label>
+        Eventy modal banner: 790x 400
+        <input type="text" bind:value={upravenýZáznam.bannerpic_url} placeholder="https://..." />
       </label>
 
       <label>
@@ -271,148 +302,200 @@
 </div>
 
 <style>
-  :global(body) {
-    background-color: #0e0e0e;
-    color: #eee;
-    font-family: var(--font-text);
-    margin: 0;
-    padding: 0;
-  }
+:global(body) {
+  background-color: #0e0e0e;
+  color: #eee;
+  font-family: var(--font-text, "Inter", sans-serif);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
 
-  .container {
-    display: flex;
-    justify-content: space-evenly;
-    
-  }
+/* Layout */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
 
-  h2, h3, h4, h5 {
-    color: white;
-    margin-top: 2rem;
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  padding: 2rem;
+}
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-  }
+.seznam{
+  width: 500px;
+}
 
-  li {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
-  }
+/* Nadpisy */
+h2, h3, h4 {
+  color: #fff;
+  font-family: var(--font-heading, "Oswald", sans-serif);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 1.5rem 0 1rem;
+}
 
-  li:hover {
-    transform: translateY(-2px);
-  }
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
 
-  strong {
-    font-size: 1.2rem;
-    color: #fff;
-  }
+h3 {
+  font-size: 1.4rem;
+}
 
-  small {
-    display: block;
-    margin-top: 0.5rem;
-    color: #aaa;
-  }
+h4 {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+}
 
-  .buttons {
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.5rem;
-  }
+/* Seznam eventů */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
 
-  button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: background 0.2s, transform 0.1s;
-  }
+li {
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s, border-color 0.2s;
+}
 
-  button:hover {
-    background: #2c80b4;
-    transform: scale(1.02);
-  }
+li:hover {
+  transform: translateY(-3px);
+  border-color: #3498db;
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 0.95rem;
-  }
+strong {
+  font-size: 1.2rem;
+  color: #fff;
+}
 
-  th, td {
-    border: 1px solid #444;
-    padding: 0.6rem;
-    text-align: left;
-  }
+small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
 
-  th {
-    background-color: #2a2a2a;
-    color: #fff;
-    font-weight: 600;
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-  }
+/* Tlačítka */
+button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.1s;
+}
 
-  td {
-    color: #ddd;
-  }
+button:hover {
+  background: #2c80b4;
+  transform: scale(1.03);
+}
 
-  .event-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin: 1.5rem 0;
-  }
+.buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.8rem;
+}
 
-  .event-form label {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.95rem;
-    color: #ccc;
-  }
+/* Formuláře */
+.event-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
 
-  .event-form textarea {
-    resize: vertical;
-    min-height: 80px;
-    background: #222;
-    border: 1px solid #444;
-    border-radius: 6px;
-    padding: 0.5rem;
-    color: #eee;
-  }
+.event-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #ccc;
+  font-weight: 500;
+}
 
+.event-form textarea {
+  resize: vertical;
+  min-height: 100px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0.6rem;
+  color: #eee;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
 
 input[type="text"],
-textarea{
-  padding: 0.6rem;
-  border: 1px solid #444;
-  border-radius: 6px;
+textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #333;
+  border-radius: 8px;
   background-color: #111;
   color: #eee;
   font-size: 1rem;
-  font-family: var(--font-text);
-  transition: border-color 0.2s;
-  width: 95%;
+  font-family: var(--font-text, "Inter", sans-serif);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-  input[type="text"]:focus,
-textarea:focus{
+input[type="text"]:focus,
+textarea:focus {
   border-color: #3498db;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(52,152,219,0.3);
 }
+
+/* Tabulky */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+th {
+  background-color: #222;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  color: #ddd;
+}
+
+/* Lineup inputy */
+.lineup-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.lineup-inputs input {
+  flex: 1;
+}
+
+
 
 </style>

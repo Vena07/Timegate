@@ -113,6 +113,7 @@
   :global(p),
   :global(div) {
     font-size: clamp(1rem, 2vw, 1.2rem);
+    white-space: pre-line;
     font-family: var(--font-text);
   }
 </style>

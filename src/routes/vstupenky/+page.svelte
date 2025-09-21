@@ -29,37 +29,53 @@
   {:else if data.length === 0}
     <p>Žádné vstupenky nebyly nalezeny.</p>
   {:else}
-    <div class="ticket-list">
+   
+  <div class="ticket-list">
     {#each data as d}
+    {#if d.ticket_url.length !== 0}   
       <div class="ticket">
       <div class="ticket-left" 
-      style="background-image: url({d.poster_url});"></div>
+      style="background-image: url({d.ticketpic_url});"></div>
       <div class="ticket-right">
-        <div>
-          <div class="title">{d.title_cz}</div>
-          <div class="subtitle">
-            <Calendar size="16" style="vertical-align: middle; margin-right: 6px;" />
-            {d.date}
-          </div>
-          <div class="subtitle">
-            <MapPin size="16" style="vertical-align: middle; margin-right: 6px;" />
-            {d.location}
+        <div class="mezera">
+          <div>
+            <div class="title">{d.title_cz}</div>
+            <div class="subtitle">
+              <Calendar size="16" style="vertical-align: middle; margin-right: 6px;" />
+              {d.date}
+            </div>
+            <div class="subtitle">
+              <MapPin size="16" style="vertical-align: middle; margin-right: 6px;" />
+              {d.location}
+            </div>
           </div>
           <div class="links">
-            <a class="link" href="{d.ticket_url}">Vstupenky zde</a>
+          
+        
+          <a class="link" href="{d.ticket_url}" target="_blank">
+          Koupit vstupenku
+        </a>
+        
           </div>
         </div>
         <div class="footer">
           <span>© 2025 Timegate</span>
         </div>
       </div>
-    </div>
+    </div>{/if}
     {/each}
   </div>
   {/if}
+  
 </div>
 
 <style>
+.mezera{
+  display: flex;
+  flex-direction: column;
+  gap: 50PX;
+}
+ 
   
 .ticket-wrapper {
   display: flex;
@@ -130,6 +146,7 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: end;
 }
 
 .link {
@@ -190,5 +207,14 @@
     text-align: center;
     margin-top: 20px;
   }
+  .mezera{
+  display: flex;
+  flex-direction: column;
+  gap: 0PX;
+  
+  
+
+}
+
 }
 </style>

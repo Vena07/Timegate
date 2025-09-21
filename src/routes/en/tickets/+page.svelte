@@ -33,7 +33,7 @@
     {#each data as d}
       <div class="ticket">
       <div class="ticket-left" 
-      style="background-image: url({d.poster_url});"></div>
+      style="background-image: url({d.ticketpic_url});"></div>
       <div class="ticket-right">
         <div>
           <div class="title">{d.title_en}</div>

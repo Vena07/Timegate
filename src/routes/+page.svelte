@@ -21,7 +21,8 @@
 
       novinky = data.news;
       events = data.event;
-      galleryImages = data.gallery.map(img => img.image_url || img.url);
+      galleryImages = data.gallery.map(img => img.image_url || img.url)
+      .filter(url => !url.includes('streamable.com'));;
 
       soundTracks = data.sound_track;
     } catch (e) {
@@ -362,13 +363,14 @@ font-size: 3rem;
   }
 
  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
-    gap: 2rem;
-    place-items:center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 
 
   .event-card {

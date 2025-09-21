@@ -1,14 +1,18 @@
 import { db } from '$lib/server/db';
 import { json } from '@sveltejs/kit';
-import { desc } from 'drizzle-orm';
+import { asc, desc, gte } from 'drizzle-orm';
 import { schema } from '$lib/server/db/schema';
 
 export async function GET() {
   try {
-    const latestEvent = await db
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+    // Vybere 3 nejbližší nadcházející eventy
+    const upcomingEvents = await db
       .select()
       .from(schema.event)
-      .orderBy(desc(schema.event.date))
+      .where(gte(schema.event.date, today))
+      .orderBy(asc(schema.event.date)) // od nejbližšího data
       .limit(3);
 
     const latestNews = await db
@@ -36,7 +40,7 @@ export async function GET() {
       .limit(3);
 
     return json({
-      event: latestEvent,
+      event: upcomingEvents,
       news: latestNews,
       gallery: latestGallery,
       artist: latestArtist,

@@ -217,11 +217,27 @@
   }
 
   .container {
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    display: flex;
-    justify-content: space-around;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+
+  padding: 2rem;
+}
+
+.news-list{
+  width: 500px;
+}
+
+p {
+  display: -webkit-box;       /* nutné pro webkit */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;      /* WebKit/Chrome/Safari */
+  line-clamp: 3;              /* standardní vlastnost (novější prohlížeče) */
+}
+
 
   h2, h3 {
     color: white;

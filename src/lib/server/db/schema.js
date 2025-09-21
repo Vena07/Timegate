@@ -40,6 +40,8 @@ export const event = sqliteTable('event', {
   location: text('location').notNull(),
   location_url: text('location_url').notNull(),
   poster_url: text('poster_url'),
+  ticketpic_url: text('ticketpic_url'),
+  bannerpic_url: text('bannerpic_url'),
   description_cz: text('description_cz'),
   description_en: text('description_en'),
   ticket_url: text('ticket_url'),
