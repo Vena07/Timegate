@@ -94,6 +94,7 @@
 
 .ticket-left {
   width: 300px;
+  height: 300px;
   background: center/cover no-repeat;
 }
 

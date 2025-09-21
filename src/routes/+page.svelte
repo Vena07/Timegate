@@ -146,7 +146,7 @@
         <article class="event-card">
           <img src={event.poster_url} alt={"Plakát akce " + event.title} class="poster" />
           <div class="event-info">
-            <h2>{event.title}</h2>
+            <h2>{event.title_cz}</h2>
             <p class="info-item"><Calendar size="30" /> <strong>Datum:</strong> {event.date}</p>
             <p class="info-item"><MapPin size="30" /> <strong>Místo:</strong> <a style="text-decoration: underline;" href="{event.location_url}">{event.location}</a></p>
             <a href={`/akce?id=${event.id}`} class="link">Zjistit více</a>
@@ -250,6 +250,7 @@ font-size: 3rem;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    
   }
   .modal-content {
     background: #111;
@@ -275,6 +276,21 @@ font-size: 3rem;
     color: #ccc;
     margin-bottom: 1rem;
   }
+
+   .modal-content::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  .modal-content::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+  }
+
+  .modal-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    
+  }
+
   .close-btn {
     
     top: 10px;
@@ -335,7 +351,7 @@ font-size: 3rem;
   }
 
   .events-list h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 2.5rem;
     text-transform: uppercase;
     text-align: center;

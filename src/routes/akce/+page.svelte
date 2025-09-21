@@ -84,15 +84,19 @@ import Loader from '$lib/components/Loader.svelte';
           <table>
             <thead>
               <tr>
-                <th>Čas</th>
+                
+                  <th>Čas</th>
+                
                 <th>DJ</th>
                 <th>Žánr</th>
               </tr>
             </thead>
             <tbody>
               {#each selectedEvent.lineup as item}
-                <tr>
-                  <td>{item.time_range}</td>
+                <tr><td>
+                    {item.time_range}
+                    </td>
+                  
                   <td>{item.artist_name}</td>
                   <td>{item.genre}</td>
                 </tr>
@@ -104,9 +108,15 @@ import Loader from '$lib/components/Loader.svelte';
       </section>
 
       <div class="links">
-        <a class="link" href="{selectedEvent.ticket_url}" target="_blank">
+        {#if selectedEvent.ticket_url.length === 0} 
+        <p class="link">
+          Brzy dostupné
+        </p>
+        {:else}
+          <a class="link" href="{selectedEvent.ticket_url}" target="_blank">
           Koupit vstupenku
         </a>
+        {/if}
         <button on:click={closeDetail}>← Zpět na všechny akce</button>
       </div>
     </div>
@@ -150,11 +160,10 @@ import Loader from '$lib/components/Loader.svelte';
   }
 
   .poster {
-    width: auto;
+    width: 300px;
     height: 300px;
-    
     border-radius: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
   }
 
   .event-card h3 {
