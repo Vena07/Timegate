@@ -204,24 +204,7 @@
     text-align: center;
     background-color: #1e1f21;
   }
-
-   .modal-content::-webkit-scrollbar {
-    height: 2px;
-  }
-
-  .modal-content::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 4px;
-  }
-
-  .modal-content::-webkit-scrollbar-track {
-    background: #1a1a1a;
-    
-  }
-  .novinky-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+ 
   .novinky-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -233,16 +216,21 @@
     padding: 1rem;
     color: white;
     display: flex;
+    backdrop-filter: blur(50px);
     flex-direction: column;
     justify-content: space-between;
- 
+    
   }
   .novinka-karta h3 {
     margin-bottom: 0.5rem;
+
+  }
+   .novinky-section h2 {
+    
+font-size: 3rem;
   }
   .novinka-karta p {
     flex-grow: 1;
-    background-color: #1e1f21;
   }
 
 
@@ -256,6 +244,7 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    
   }
   .modal-content {
     background: #111;
@@ -266,6 +255,7 @@
     overflow-y: auto;
     color: white;
     position: relative;
+    margin: 0 20px;
   }
   .modal-content img {
     width: 100%;
@@ -280,8 +270,23 @@
     color: #ccc;
     margin-bottom: 1rem;
   }
+
+   .modal-content::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  .modal-content::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+  }
+
+  .modal-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    
+  }
+
   .close-btn {
-    position: absolute;
+    
     top: 10px;
     right: 15px;
     background: transparent;
@@ -326,8 +331,7 @@
     padding-top: 30vh;
   }
 
-  
-
+ 
   p {
     margin-bottom: 2rem;
     font-weight: 300;
@@ -341,27 +345,32 @@
   }
 
   .events-list h2 {
-    font-size: 1rem;
+    font-size: 2rem;
     margin-bottom: 2.5rem;
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 3px;
+    margin: none;
+    padding: none;
+    width: none;
   }
 
-  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
-    gap: 2rem;
-    place-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+ .events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
 
   .event-card {
     background: #1a1a1a;
     border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+ box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -379,9 +388,9 @@
 
   .poster {
     width: 100%;
-    height: 300px; /* Fixní výška pro jednotnost */
+    height: 500px; /* Fixní výška pro jednotnost */
     border-radius: 10px;
-    object-fit: cover;
+  
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   }
 
@@ -389,10 +398,10 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+   
     text-align: start;
     width: 100%;
  }
-
 
 
   .event-info h2 {
@@ -475,6 +484,8 @@
     transform: translateY(-5px);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
   }
+
+
 
   .link,button {
     display: inline-block;
